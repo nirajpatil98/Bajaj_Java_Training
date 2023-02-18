@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8000
 
 spring:
   application:
@@ -10,11 +10,14 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: EMPLOYEE-SERVICE
-          uri: lb://EMPLOYEE-SERVICE
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/employee/**
-
+            - Path=/user/**
+        - id: REFERRAL-SERVICE
+          uri: lb://REFERRAL-SERVICE
+          predicates:
+            - Path=/referral/**
 
       
 eureka:
